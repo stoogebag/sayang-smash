@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workout App — Layout Preview</title>
+
+  <!-- Design System: Barlow Condensed / Barlow -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Barlow Condensed"', 'sans-serif'],
+            body: ['Barlow', 'sans-serif'],
+          },
+          colors: {
+            flame: {
+              50: '#fff7ed',
+              100: '#ffedd5',
+              200: '#fed7aa',
+              300: '#fdba74',
+              400: '#fb923c',
+              500: '#f97316',
+              600: '#ea580c',
+              700: '#c2410c',
+              800: '#9a3412',
+              900: '#7c2d12',
+            },
+            go: {
+              400: '#4ade80',
+              500: '#22c55e',
+              600: '#16a34a',
+            },
+            slab: {
+              50: '#f8fafc',
+              100: '#f1f5f9',
+              200: '#e2e8f0',
+              300: '#cbd5e1',
+              400: '#94a3b8',
+              500: '#64748b',
+              600: '#475569',
+              700: '#334155',
+              800: '#1e293b',
+              850: '#172033',
+              900: '#0f172a',
+              950: '#0a0f1a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --color-surface: #0f172a;
+      --color-surface-raised: #1e293b;
+      --color-surface-overlay: #172033;
+      --color-text: #f8fafc;
+      --color-text-muted: #94a3b8;
+      --color-primary: #f97316;
+      --color-accent: #22c55e;
+      --color-border: #334155;
+      --color-error: #ef4444;
+      --color-warning: #eab308;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.4);
+      --shadow-md: 0 4px 12px rgba(0,0,0,.5);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,.6);
+      --space-xs: 4px;
+      --space-sm: 8px;
+      --space-md: 16px;
+      --space-lg: 24px;
+      --space-xl: 48px;
+    }
+    body {
+      background: var(--color-surface);
+      font-family: 'Barlow', sans-serif;
+    }
+    .screen-frame {
+      max-width: 390px;
+      min-height: 640px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Diagonal stripe texture for visual interest */
+    .texture-stripe {
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 10px,
+        rgba(249,115,22,0.03) 10px,
+        rgba(249,115,22,0.03) 20px
+      );
+    }
+    /* Accent bar — signature element */
+    .accent-bar {
+      width: 4px;
+      background: linear-gradient(180deg, #f97316, #ea580c);
+      border-radius: 2px;
+    }
+  </style>
+</head>
+<body class="text-slab-50 font-body antialiased">
+
+  <!-- ============================================================ -->
+  <!-- PAGE HEADER / NAV -->
+  <!-- ============================================================ -->
+  <header class="text-center pt-16 pb-10 border-b border-slab-700">
+    <h1 class="font-display text-4xl font-800 uppercase tracking-wide text-flame-500">Layout Preview</h1>
+    <p class="text-slab-400 mt-2 text-sm font-body">All screens at 390px mobile width. Scroll to review.</p>
+    <nav class="mt-8 flex flex-wrap justify-center gap-2 text-xs font-display uppercase tracking-wider">
+      <a href="#landing" class="px-4 py-2 bg-slab-800 hover:bg-flame-500 hover:text-white text-slab-300 transition-colors duration-200 cursor-pointer">Landing</a>
+      <a href="#create-workout" class="px-4 py-2 bg-slab-800 hover:bg-flame-500 hover:text-white text-slab-300 transition-colors duration-200 cursor-pointer">Create</a>
+      <a href="#select-exercise" class="px-4 py-2 bg-slab-800 hover:bg-flame-500 hover:text-white text-slab-300 transition-colors duration-200 cursor-pointer">Select</a>
+      <a href="#create-exercise" class="px-4 py-2 bg-slab-800 hover:bg-flame-500 hover:text-white text-slab-300 transition-colors duration-200 cursor-pointer">New Exercise</a>
+      <a href="#workout-saved" class="px-4 py-2 bg-slab-800 hover:bg-flame-500 hover:text-white text-slab-300 transition-colors duration-200 cursor-pointer">Saved</a>
+      <a href="#workout-screen" class="px-4 py-2 bg-slab-800 hover:bg-flame-500 hover:text-white text-slab-300 transition-colors duration-200 cursor-pointer">Workout</a>
+      <a href="#summary" class="px-4 py-2 bg-slab-800 hover:bg-flame-500 hover:text-white text-slab-300 transition-colors duration-200 cursor-pointer">Summary</a>
+    </nav>
+  </header>
+
+  <!-- ============================================================ -->
+  <!-- SCREEN 1: LANDING PAGE -->
+  <!-- ============================================================ -->
+  <section id="landing" class="py-16">
+    <div class="text-center mb-6">
+      <span class="text-xs font-display uppercase tracking-[0.25em] text-slab-500">01 / Landing</span>
+    </div>
+    <div class="screen-frame bg-slab-900 rounded-none border border-slab-700 shadow-lg flex flex-col texture-stripe">
+      <div class="flex-1 flex flex-col items-center justify-center px-10 py-20">
+        <!-- Brand mark — bold condensed type, not an icon -->
+        <div class="relative mb-2">
+          <span class="font-display text-7xl font-900 uppercase tracking-tight text-slab-50 leading-none">WRK</span>
+          <div class="absolute -right-3 top-0 w-3 h-full bg-flame-500"></div>
+        </div>
+        <p class="font-display text-sm uppercase tracking-[0.3em] text-slab-400 mt-1">Workout Logger</p>
+
+        <div class="mt-16 w-full space-y-4">
+          <button class="w-full py-4 px-6 bg-flame-500 hover:bg-flame-600 text-white font-display font-700 uppercase tracking-wider text-lg transition-colors duration-200 cursor-pointer">
+            Create Workout
+          </button>
+          <button class="w-full py-4 px-6 bg-slab-800 hover:bg-slab-700 text-slab-200 font-display font-600 uppercase tracking-wider text-lg transition-colors duration-200 border-l-4 border-flame-500 cursor-pointer">
+            Random Workout
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SCREEN 2: CREATE WORKOUT PAGE -->
+  <!-- ============================================================ -->
+  <section id="create-workout" class="py-16">
+    <div class="text-center mb-6">
+      <span class="text-xs font-display uppercase tracking-[0.25em] text-slab-500">02 / Create Workout</span>
+    </div>
+    <div class="screen-frame bg-slab-900 rounded-none border border-slab-700 shadow-lg flex flex-col">
+      <!-- Header -->
+      <div class="px-5 pt-6 pb-4 border-b border-slab-700 bg-slab-850">
+        <label class="text-[10px] font-display uppercase tracking-[0.2em] text-slab-500">Workout Name</label>
+        <input type="text" value="MONDAY 23/03/26" class="mt-1 w-full bg-transparent text-2xl font-display font-800 uppercase tracking-wide text-slab-50 focus:outline-none border-b-2 border-slab-700 pb-2 focus:border-flame-500 transition-colors duration-200"/>
+      </div>
+
+      <!-- Exercise List -->
+      <div class="flex-1 px-5 py-5 space-y-3">
+        <!-- Exercise item 1 — with accent bar -->
+        <div class="flex bg-slab-800 border border-slab-700 overflow-hidden">
+          <div class="accent-bar"></div>
+          <div class="flex-1 flex items-center justify-between p-4">
+            <div>
+              <h3 class="font-display font-700 uppercase tracking-wide text-slab-50">Bench Press</h3>
+              <p class="text-sm text-slab-400 mt-0.5 font-body">12 reps &middot; 60 kg</p>
+            </div>
+            <button class="text-slab-500 hover:text-red-400 transition-colors duration-200 cursor-pointer p-1">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Exercise item 2 -->
+        <div class="flex bg-slab-800 border border-slab-700 overflow-hidden">
+          <div class="accent-bar"></div>
+          <div class="flex-1 flex items-center justify-between p-4">
+            <div>
+              <h3 class="font-display font-700 uppercase tracking-wide text-slab-50">Plank</h3>
+              <p class="text-sm text-slab-400 mt-0.5 font-body">60 seconds</p>
+            </div>
+            <button class="text-slab-500 hover:text-red-400 transition-colors duration-200 cursor-pointer p-1">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Exercise item 3 -->
+        <div class="flex bg-slab-800 border border-slab-700 overflow-hidden">
+          <div class="accent-bar"></div>
+          <div class="flex-1 flex items-center justify-between p-4">
+            <div>
+              <h3 class="font-display font-700 uppercase tracking-wide text-slab-50">Squats</h3>
+              <p class="text-sm text-slab-400 mt-0.5 font-body">15 reps &middot; 80 kg</p>
+            </div>
+            <button class="text-slab-500 hover:text-red-400 transition-colors duration-200 cursor-pointer p-1">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom actions -->
+      <div class="px-5 pb-6 pt-3 space-y-3 border-t border-slab-700">
+        <button class="w-full py-3.5 px-6 bg-slab-800 hover:bg-slab-700 text-slab-300 font-display font-600 uppercase tracking-wider text-sm transition-colors duration-200 border border-dashed border-slab-600 cursor-pointer">
+          + Add Exercise
+        </button>
+        <button class="w-full py-4 px-6 bg-go-500 hover:bg-go-600 text-white font-display font-700 uppercase tracking-wider text-base transition-colors duration-200 cursor-pointer">
+          Save Workout
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SCREEN 3: SELECT EXERCISE MODAL -->
+  <!-- ============================================================ -->
+  <section id="select-exercise" class="py-16">
+    <div class="text-center mb-6">
+      <span class="text-xs font-display uppercase tracking-[0.25em] text-slab-500">03 / Select Exercise</span>
+    </div>
+    <div class="screen-frame bg-slab-900 rounded-none border border-slab-700 shadow-lg flex flex-col">
+      <!-- Overlay -->
+      <div class="absolute inset-0 bg-black/50"></div>
+
+      <!-- Modal -->
+      <div class="relative mt-12 mx-3 bg-slab-850 border border-slab-600 flex flex-col max-h-[520px]">
+        <!-- Orange top bar -->
+        <div class="h-1 bg-gradient-to-r from-flame-500 to-flame-700"></div>
+
+        <!-- Modal header -->
+        <div class="px-5 pt-5 pb-3">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="font-display text-xl font-800 uppercase tracking-wide text-slab-50">Select Exercise</h2>
+            <button class="text-slab-400 hover:text-white transition-colors duration-200 cursor-pointer">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+              </svg>
+            </button>
+          </div>
+          <!-- Search -->
+          <div class="relative">
+            <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slab-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+            <input type="text" placeholder="Search exercises..." class="w-full bg-slab-900 border border-slab-600 py-2.5 pl-10 pr-4 text-sm text-slab-50 font-body placeholder:text-slab-500 focus:outline-none focus:border-flame-500 transition-colors duration-200"/>
+          </div>
+        </div>
+
+        <!-- Exercise list -->
+        <div class="flex-1 overflow-y-auto px-3 pb-3">
+          <button class="w-full text-left px-4 py-3 hover:bg-slab-800 border-l-2 border-transparent hover:border-flame-500 transition-all duration-150 flex items-center justify-between cursor-pointer">
+            <span class="font-display font-600 uppercase tracking-wide text-sm text-slab-50">Bench Press</span>
+            <span class="text-slab-500 text-[10px] font-display uppercase tracking-wider">Reps &middot; Weight</span>
+          </button>
+          <button class="w-full text-left px-4 py-3 hover:bg-slab-800 border-l-2 border-transparent hover:border-flame-500 transition-all duration-150 flex items-center justify-between cursor-pointer">
+            <span class="font-display font-600 uppercase tracking-wide text-sm text-slab-50">Squats</span>
+            <span class="text-slab-500 text-[10px] font-display uppercase tracking-wider">Reps &middot; Weight</span>
+          </button>
+          <button class="w-full text-left px-4 py-3 hover:bg-slab-800 border-l-2 border-transparent hover:border-flame-500 transition-all duration-150 flex items-center justify-between cursor-pointer">
+            <span class="font-display font-600 uppercase tracking-wide text-sm text-slab-50">Plank</span>
+            <span class="text-slab-500 text-[10px] font-display uppercase tracking-wider">Time</span>
+          </button>
+          <button class="w-full text-left px-4 py-3 hover:bg-slab-800 border-l-2 border-transparent hover:border-flame-500 transition-all duration-150 flex items-center justify-between cursor-pointer">
+            <span class="font-display font-600 uppercase tracking-wide text-sm text-slab-50">Pull-ups</span>
+            <span class="text-slab-500 text-[10px] font-display uppercase tracking-wider">Reps</span>
+          </button>
+          <button class="w-full text-left px-4 py-3 hover:bg-slab-800 border-l-2 border-transparent hover:border-flame-500 transition-all duration-150 flex items-center justify-between cursor-pointer">
+            <span class="font-display font-600 uppercase tracking-wide text-sm text-slab-50">Deadlift</span>
+            <span class="text-slab-500 text-[10px] font-display uppercase tracking-wider">Reps &middot; Weight</span>
+          </button>
+          <button class="w-full text-left px-4 py-3 hover:bg-slab-800 border-l-2 border-transparent hover:border-flame-500 transition-all duration-150 flex items-center justify-between cursor-pointer">
+            <span class="font-display font-600 uppercase tracking-wide text-sm text-slab-50">Wall Sit</span>
+            <span class="text-slab-500 text-[10px] font-display uppercase tracking-wider">Time</span>
+          </button>
+        </div>
+
+        <!-- Create exercise button -->
+        <div class="px-5 py-4 border-t border-slab-600">
+          <button class="w-full py-2.5 px-4 bg-slab-900 hover:bg-slab-800 text-flame-400 font-display font-600 uppercase tracking-wider text-sm transition-colors duration-200 border border-dashed border-flame-500/40 cursor-pointer">
+            + New Exercise
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SCREEN 3b: EXERCISE PARAMS FORM -->
+  <!-- ============================================================ -->
+  <section class="py-16">
+    <div class="text-center mb-6">
+      <span class="text-xs font-display uppercase tracking-[0.25em] text-slab-500">03b / Exercise Params</span>
+    </div>
+    <div class="screen-frame bg-slab-900 rounded-none border border-slab-700 shadow-lg flex flex-col">
+      <div class="absolute inset-0 bg-black/50"></div>
+
+      <div class="relative mt-20 mx-3 bg-slab-850 border border-slab-600">
+        <div class="h-1 bg-gradient-to-r from-flame-500 to-flame-700"></div>
+        <div class="p-6">
+          <h2 class="font-display text-2xl font-800 uppercase tracking-wide text-slab-50">Bench Press</h2>
+          <p class="text-slab-500 text-[10px] font-display uppercase tracking-wider mt-1">Reps &middot; Weighted</p>
+
+          <div class="mt-8 space-y-6">
+            <!-- Reps input -->
+            <div>
+              <label class="text-[10px] font-display uppercase tracking-[0.2em] text-slab-500">Target Reps</label>
+              <input type="number" value="12" class="mt-2 w-full bg-slab-900 border border-slab-600 py-4 px-4 text-slab-50 text-3xl font-display font-800 text-center focus:outline-none focus:border-flame-500 transition-colors duration-200"/>
+            </div>
+
+            <!-- Weight input -->
+            <div>
+              <label class="text-[10px] font-display uppercase tracking-[0.2em] text-slab-500">Weight (kg)</label>
+              <input type="number" value="60" class="mt-2 w-full bg-slab-900 border border-slab-600 py-4 px-4 text-slab-50 text-3xl font-display font-800 text-center focus:outline-none focus:border-flame-500 transition-colors duration-200"/>
+            </div>
+          </div>
+
+          <div class="mt-8 flex gap-3">
+            <button class="flex-1 py-3.5 px-4 bg-slab-800 hover:bg-slab-700 text-slab-300 font-display font-600 uppercase tracking-wider text-sm transition-colors duration-200 border border-slab-600 cursor-pointer">
+              Cancel
+            </button>
+            <button class="flex-1 py-3.5 px-4 bg-flame-500 hover:bg-flame-600 text-white font-display font-700 uppercase tracking-wider text-sm transition-colors duration-200 cursor-pointer">
+              Add to Workout
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SCREEN 4: CREATE EXERCISE (INLINE) -->
+  <!-- ============================================================ -->
+  <section id="create-exercise" class="py-16">
+    <div class="text-center mb-6">
+      <span class="text-xs font-display uppercase tracking-[0.25em] text-slab-500">04 / Create Exercise</span>
+    </div>
+    <div class="screen-frame bg-slab-900 rounded-none border border-slab-700 shadow-lg flex flex-col">
+      <div class="absolute inset-0 bg-black/50"></div>
+
+      <div class="relative mt-12 mx-3 bg-slab-850 border border-slab-600 flex flex-col">
+        <div class="h-1 bg-gradient-to-r from-flame-500 to-flame-700"></div>
+
+        <!-- Modal header -->
+        <div class="px-5 pt-5 pb-3 flex items-center justify-between">
+          <h2 class="font-display text-xl font-800 uppercase tracking-wide text-slab-50">New Exercise</h2>
+          <button class="text-slab-400 hover:text-white transition-colors duration-200 cursor-pointer">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Inline create form -->
+        <div class="px-5 pb-6 space-y-6">
+          <!-- Name -->
+          <div>
+            <label class="text-[10px] font-display uppercase tracking-[0.2em] text-slab-500">Exercise Name</label>
+            <input type="text" placeholder="e.g. Romanian Deadlift" class="mt-2 w-full bg-slab-900 border border-slab-600 py-3 px-4 text-slab-50 font-display font-600 uppercase text-lg placeholder:text-slab-600 placeholder:normal-case placeholder:font-body placeholder:font-400 placeholder:text-sm focus:outline-none focus:border-flame-500 transition-colors duration-200"/>
+          </div>
+
+          <!-- Type -->
+          <div>
+            <label class="text-[10px] font-display uppercase tracking-[0.2em] text-slab-500">Type</label>
+            <div class="mt-2 flex gap-0">
+              <button class="flex-1 py-3 bg-flame-500 text-white font-display font-700 uppercase tracking-wider text-sm cursor-pointer">
+                Reps
+              </button>
+              <button class="flex-1 py-3 bg-slab-900 border border-slab-600 text-slab-400 font-display font-600 uppercase tracking-wider text-sm hover:bg-slab-800 transition-colors duration-200 cursor-pointer">
+                Time
+              </button>
+            </div>
+          </div>
+
+          <!-- Use Weight -->
+          <div class="flex items-center justify-between py-3 border-t border-slab-700">
+            <span class="text-sm text-slab-300 font-body">Uses weight?</span>
+            <div class="w-12 h-7 bg-flame-500 rounded-sm relative cursor-pointer">
+              <div class="absolute right-0.5 top-0.5 w-6 h-6 bg-white rounded-sm shadow transition-transform"></div>
+            </div>
+          </div>
+
+          <div class="flex gap-3">
+            <button class="flex-1 py-3.5 px-4 bg-slab-800 hover:bg-slab-700 text-slab-300 font-display font-600 uppercase tracking-wider text-sm transition-colors duration-200 border border-slab-600 cursor-pointer">
+              Back
+            </button>
+            <button class="flex-1 py-3.5 px-4 bg-flame-500 hover:bg-flame-600 text-white font-display font-700 uppercase tracking-wider text-sm transition-colors duration-200 cursor-pointer">
+              Create
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SCREEN 5: WORKOUT SAVED -->
+  <!-- ============================================================ -->
+  <section id="workout-saved" class="py-16">
+    <div class="text-center mb-6">
+      <span class="text-xs font-display uppercase tracking-[0.25em] text-slab-500">05 / Workout Saved</span>
+    </div>
+    <div class="screen-frame bg-slab-900 rounded-none border border-slab-700 shadow-lg flex flex-col">
+      <div class="flex-1 flex flex-col items-center justify-center px-8 py-12">
+        <!-- Success checkmark -->
+        <div class="w-16 h-16 border-2 border-go-500 flex items-center justify-center mb-6">
+          <svg class="w-8 h-8 text-go-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+          </svg>
+        </div>
+
+        <h1 class="font-display text-3xl font-900 uppercase tracking-wide text-slab-50">Saved</h1>
+        <p class="text-slab-400 text-sm font-body mt-2">Monday 23/03/26</p>
+
+        <!-- Link display -->
+        <div class="mt-8 w-full bg-slab-800 border border-slab-700 p-4">
+          <label class="text-[10px] font-display uppercase tracking-[0.2em] text-slab-500">Share Link</label>
+          <div class="mt-2 flex items-center gap-2">
+            <code class="flex-1 text-flame-400 text-sm font-mono truncate">wrk.app/w/xK9mQ</code>
+            <button class="text-slab-400 hover:text-white transition-colors duration-200 cursor-pointer p-1">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- QR Code placeholder -->
+        <div class="mt-6 w-36 h-36 bg-white flex items-center justify-center">
+          <div class="w-28 h-28 bg-gray-100 grid grid-cols-5 grid-rows-5 gap-0.5 p-1">
+            <div class="bg-slab-900"></div><div class="bg-slab-900"></div><div class="bg-slab-900"></div><div class="bg-gray-100"></div><div class="bg-slab-900"></div>
+            <div class="bg-slab-900"></div><div class="bg-gray-100"></div><div class="bg-slab-900"></div><div class="bg-slab-900"></div><div class="bg-gray-100"></div>
+            <div class="bg-gray-100"></div><div class="bg-slab-900"></div><div class="bg-gray-100"></div><div class="bg-gray-100"></div><div class="bg-slab-900"></div>
+            <div class="bg-slab-900"></div><div class="bg-slab-900"></div><div class="bg-gray-100"></div><div class="bg-slab-900"></div><div class="bg-slab-900"></div>
+            <div class="bg-slab-900"></div><div class="bg-gray-100"></div><div class="bg-slab-900"></div><div class="bg-gray-100"></div><div class="bg-slab-900"></div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="mt-8 w-full space-y-3">
+          <button class="w-full py-4 px-6 bg-flame-500 hover:bg-flame-600 text-white font-display font-700 uppercase tracking-wider text-base transition-colors duration-200 cursor-pointer">
+            Start Workout
+          </button>
+          <button class="w-full py-4 px-6 bg-slab-800 hover:bg-slab-700 text-slab-200 font-display font-600 uppercase tracking-wider text-base transition-colors duration-200 border border-slab-700 cursor-pointer">
+            Share
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SCREEN 6: WORKOUT SCREEN (DO WORKOUT) -->
+  <!-- ============================================================ -->
+  <section id="workout-screen" class="py-16">
+    <div class="text-center mb-6">
+      <span class="text-xs font-display uppercase tracking-[0.25em] text-slab-500">06 / Do Workout</span>
+    </div>
+    <div class="screen-frame bg-slab-900 rounded-none border border-slab-700 shadow-lg flex flex-col">
+      <!-- Header -->
+      <div class="px-5 pt-6 pb-4 border-b border-slab-700 bg-slab-850">
+        <h1 class="font-display text-2xl font-800 uppercase tracking-wide text-slab-50">Monday 23/03/26</h1>
+        <div class="flex items-center justify-between mt-3">
+          <p class="text-sm text-slab-400 font-body">3 remaining</p>
+          <label class="flex items-center gap-2 text-[10px] font-display uppercase tracking-wider text-slab-500 cursor-pointer">
+            <span>Hide done</span>
+            <div class="w-10 h-6 bg-flame-500 rounded-sm relative">
+              <div class="absolute right-0.5 top-0.5 w-5 h-5 bg-white rounded-sm shadow"></div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Exercise list -->
+      <div class="flex-1 px-5 py-5 space-y-4">
+
+        <!-- REPS exercise — in progress -->
+        <div class="bg-slab-800 border border-slab-700 overflow-hidden">
+          <div class="flex items-center justify-between p-4">
+            <div>
+              <h3 class="font-display font-700 uppercase tracking-wide text-slab-50">Bench Press</h3>
+              <p class="text-xs text-slab-500 font-body mt-0.5">60 kg</p>
+            </div>
+            <div class="text-right">
+              <span class="text-3xl font-display font-900 text-flame-400">7</span>
+              <span class="text-slab-500 text-sm font-display font-500"> / 12</span>
+            </div>
+          </div>
+          <div class="flex border-t border-slab-700">
+            <button class="flex-1 py-3 bg-slab-800 hover:bg-slab-700 text-slab-200 font-display font-700 text-base transition-colors duration-200 border-r border-slab-700 cursor-pointer">
+              +10
+            </button>
+            <button class="flex-1 py-3 bg-slab-800 hover:bg-slab-700 text-slab-200 font-display font-700 text-base transition-colors duration-200 border-r border-slab-700 cursor-pointer">
+              +5
+            </button>
+            <button class="flex-1 py-3 bg-slab-800 hover:bg-slab-700 text-red-400 font-display font-700 text-base transition-colors duration-200 cursor-pointer">
+              &minus;1
+            </button>
+          </div>
+        </div>
+
+        <!-- TIME exercise — not started -->
+        <div class="bg-slab-800 border border-slab-700 overflow-hidden">
+          <div class="flex items-center justify-between p-4">
+            <h3 class="font-display font-700 uppercase tracking-wide text-slab-50">Plank</h3>
+            <span class="text-3xl font-display font-900 text-slab-50 tabular-nums">1:00</span>
+          </div>
+          <div class="border-t border-slab-700">
+            <button class="w-full py-3 bg-go-500 hover:bg-go-600 text-white font-display font-700 uppercase tracking-wider text-sm transition-colors duration-200 flex items-center justify-center gap-2 cursor-pointer">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+              Start
+            </button>
+          </div>
+        </div>
+
+        <!-- TIME exercise — running -->
+        <div class="bg-slab-800 border border-flame-500/40 overflow-hidden">
+          <div class="flex items-center justify-between p-4">
+            <h3 class="font-display font-700 uppercase tracking-wide text-flame-400">Wall Sit</h3>
+            <span class="text-3xl font-display font-900 text-flame-400 tabular-nums">0:34</span>
+          </div>
+          <div class="flex border-t border-slab-700">
+            <button class="flex-1 py-3 bg-yellow-500/10 hover:bg-yellow-500/20 text-yellow-400 font-display font-700 uppercase tracking-wider text-sm transition-colors duration-200 border-r border-slab-700 cursor-pointer">
+              Pause
+            </button>
+            <button class="flex-1 py-3 bg-red-500/10 hover:bg-red-500/20 text-red-400 font-display font-700 uppercase tracking-wider text-sm transition-colors duration-200 cursor-pointer">
+              Stop
+            </button>
+          </div>
+        </div>
+
+        <!-- REPS exercise — completed -->
+        <div class="bg-slab-800/40 border border-slab-700/40 overflow-hidden opacity-40">
+          <div class="flex items-center justify-between p-4">
+            <div>
+              <h3 class="font-display font-700 uppercase tracking-wide text-slab-500 line-through">Squats</h3>
+              <p class="text-xs text-slab-600 font-body mt-0.5">80 kg</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-lg font-display font-700 text-slab-500">15/15</span>
+              <svg class="w-5 h-5 text-go-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom action -->
+      <div class="px-5 pb-6 pt-3 border-t border-slab-700">
+        <button class="w-full py-4 px-6 bg-go-500 hover:bg-go-600 text-white font-display font-800 uppercase tracking-wider text-lg transition-colors duration-200 cursor-pointer">
+          Me Done
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SCREEN 7: SUMMARY -->
+  <!-- ============================================================ -->
+  <section id="summary" class="py-16">
+    <div class="text-center mb-6">
+      <span class="text-xs font-display uppercase tracking-[0.25em] text-slab-500">07 / Summary</span>
+    </div>
+    <div class="screen-frame bg-slab-900 rounded-none border border-slab-700 shadow-lg flex flex-col">
+      <div class="flex-1 px-5 py-8">
+        <!-- Header -->
+        <div class="text-center mb-10">
+          <div class="w-14 h-14 border-2 border-go-500 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-go-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+            </svg>
+          </div>
+          <h1 class="font-display text-3xl font-900 uppercase tracking-wide text-slab-50">Complete</h1>
+          <p class="text-slab-400 text-sm font-body mt-2">Monday 23/03/26</p>
+        </div>
+
+        <!-- Exercise summary list -->
+        <div class="space-y-2">
+          <div class="flex bg-slab-800 border border-slab-700 overflow-hidden">
+            <div class="accent-bar"></div>
+            <div class="flex-1 flex items-center justify-between p-4">
+              <h3 class="font-display font-600 uppercase tracking-wide text-sm text-slab-50">Bench Press</h3>
+              <p class="text-slab-400 text-sm font-body">12 reps &middot; 60 kg</p>
+            </div>
+          </div>
+          <div class="flex bg-slab-800 border border-slab-700 overflow-hidden">
+            <div class="accent-bar"></div>
+            <div class="flex-1 flex items-center justify-between p-4">
+              <h3 class="font-display font-600 uppercase tracking-wide text-sm text-slab-50">Plank</h3>
+              <p class="text-slab-400 text-sm font-body">60 seconds</p>
+            </div>
+          </div>
+          <div class="flex bg-slab-800 border border-slab-700 overflow-hidden">
+            <div class="accent-bar"></div>
+            <div class="flex-1 flex items-center justify-between p-4">
+              <h3 class="font-display font-600 uppercase tracking-wide text-sm text-slab-50">Squats</h3>
+              <p class="text-slab-400 text-sm font-body">15 reps &middot; 80 kg</p>
+            </div>
+          </div>
+          <div class="flex bg-slab-800 border border-slab-700 overflow-hidden">
+            <div class="accent-bar"></div>
+            <div class="flex-1 flex items-center justify-between p-4">
+              <h3 class="font-display font-600 uppercase tracking-wide text-sm text-slab-50">Wall Sit</h3>
+              <p class="text-slab-400 text-sm font-body">45 seconds</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom -->
+      <div class="px-5 pb-6 pt-3 border-t border-slab-700 space-y-3">
+        <button class="w-full py-4 px-6 bg-flame-500 hover:bg-flame-600 text-white font-display font-700 uppercase tracking-wider text-base transition-colors duration-200 cursor-pointer">
+          Share Workout
+        </button>
+        <button class="w-full py-4 px-6 bg-slab-800 hover:bg-slab-700 text-slab-200 font-display font-600 uppercase tracking-wider text-base transition-colors duration-200 border border-slab-700 cursor-pointer">
+          Home
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-12 border-t border-slab-700">
+    <p class="text-slab-600 text-xs font-body">End of layout preview</p>
+  </footer>
+
+</body>
+</html>
