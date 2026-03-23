@@ -1,0 +1,3 @@
+# Local env sample for Sayang Smash
+SAYANG_SMASH_SUPABASE_URL=your-supabase-url
+SAYANG_SMASH_SUPABASE_ANON_KEY=your-anon-key
