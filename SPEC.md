@@ -6,6 +6,7 @@
 ---
 
 ### Communication Guideline
+
 - Always be concise; elaborate only when explicitly requested.
 - If more context is needed, ask one focused clarifying question.
 - Provide concrete actions or patches when asked, otherwise wait for instruction.
@@ -21,8 +22,9 @@ A simple, open-access workout logging app. No auth, no tracking. Users create wo
 ## Pages & Features
 
 ### 1. Landing Page
+
 - **Purpose**: Entry point
-- **Components**: 
+- **Components**:
   - Two buttons:
     - "Create Workout" → Navigate to Create Workout page
     - "Do Random Workout" → Pick a random workout from the DB and navigate to its Workout Screen
@@ -31,8 +33,9 @@ A simple, open-access workout logging app. No auth, no tracking. Users create wo
 ---
 
 ### 2. Create Workout Page
+
 - **Purpose**: Build a new workout by adding exercises
-- **State**: 
+- **State**:
   - `workout` object containing:
     - `name` (string, default: `"DAYOFWEEK DD/MM/YY"` e.g. "Monday 23/03/26")
     - `exercises` array (each with: exercise reference, reps/time value, weight in kg if applicable)
@@ -51,6 +54,7 @@ A simple, open-access workout logging app. No auth, no tracking. Users create wo
 ---
 
 ### 3. SelectExercise Modal
+
 - **Purpose**: Select or create exercises to add to workout
 - **Components**:
   - Search/filter input (filters exercise list as user types)
@@ -68,6 +72,7 @@ A simple, open-access workout logging app. No auth, no tracking. Users create wo
 ---
 
 ### 4. Create Exercise (Inline Sub-flow)
+
 - **Purpose**: Add new exercise type to DB
 - **Location**: Inline within the SelectExercise modal (not a separate page or second modal)
 - **Fields**:
@@ -83,6 +88,7 @@ A simple, open-access workout logging app. No auth, no tracking. Users create wo
 ---
 
 ### 5. Workout Saved Screen
+
 - **Purpose**: Confirmation and sharing screen
 - **Displays**:
   - Shareable link to workout
@@ -98,9 +104,10 @@ A simple, open-access workout logging app. No auth, no tracking. Users create wo
 ---
 
 ### 6. Workout Screen (Do Workout)
+
 - **Purpose**: Log exercise completion during workout
 - **Access**: Via URL slug (e.g., `/workout/abc12`)
-- **State**: 
+- **State**:
   - Workout loaded from DB by slug
   - All exercise progress is LOCAL (browser state only, not persisted to DB)
   - Exercises displayed in list, can be done in any order
@@ -126,6 +133,7 @@ A simple, open-access workout logging app. No auth, no tracking. Users create wo
 ---
 
 ### 7. Summary Screen
+
 - **Purpose**: Basic recap of completed workout
 - **Display**:
   - List of all exercises with their parameters (name, reps/time, weight)
@@ -136,6 +144,7 @@ A simple, open-access workout logging app. No auth, no tracking. Users create wo
 ## Data Model
 
 ### Exercise (stored in DB)
+
 ```
 {
   uid: string (UUID, auto-generated),
@@ -146,6 +155,7 @@ A simple, open-access workout logging app. No auth, no tracking. Users create wo
 ```
 
 ### Workout (stored in DB)
+
 ```
 {
   id: UUID (primary key),
@@ -169,9 +179,16 @@ A simple, open-access workout logging app. No auth, no tracking. Users create wo
 
 ## Database Setup (Supabase)
 
-- **Project**: Existing Supabase project (shared with other app)
+**CRITICAL**: This Supabase project is SHARED with other unrelated applications. All database operations MUST be scoped exclusively to Sayang Smash tables.
+
+- **Project**: Existing Supabase project (shared with other apps)
 - **Connection**: Supabase connection strings stored in `.env` file
-- **Tables**: Prefix ALL tables with `sayang_smash_`
+- **Isolation**:
+  - Prefix ALL tables with `sayang_smash_` (non-negotiable)
+  - Migrations must only touch `sayang_smash_*` tables
+  - Drizzle schemas must not reference tables from other apps
+  - Query operations must filter/select exclusively from `sayang_smash_*` namespace
+- **Tables**:
   - `sayang_smash_exercises` — exercise definitions
   - `sayang_smash_entries` — saved workouts with exercise data as JSON array
 
@@ -179,11 +196,14 @@ A simple, open-access workout logging app. No auth, no tracking. Users create wo
 
 ## Tech Stack
 
-- **Frontend**: React (framework TBD — likely Next.js or Astro)
+- **Frontend**: Next.js + React
+- **QR Code**: `qrcode.react` (stable, popular, zero dependencies)
 - **Styling**: Tailwind CSS
 - **Design**: Concept A — Industrial/Utilitarian (Barlow Condensed, Orange #F97316, Green #22C55E, sharp edges, accent bars)
 - **Database**: Supabase (prefixed tables, JSON column for exercises, connection via `.env`)
-- **Deployment**: Vercel or Netlify
+- **API**: tRPC
+- **ORM**: Drizzle
+- **Deployment**: Vercel
 
 ---
 
@@ -195,9 +215,4 @@ A simple, open-access workout logging app. No auth, no tracking. Users create wo
 - No edit after save (initial MVP)
 - Workout progress during "Do Workout" is local browser state only
 - Time values are in seconds throughout
-
----
-
-## Undefined / TBD
-
-- Frontend framework final decision (Next.js vs Astro)
+- **Database isolation**: Do NOT touch or reference any tables outside the `sayang_smash_*` namespace. Drizzle schema must only define `sayang_smash_*` tables.
