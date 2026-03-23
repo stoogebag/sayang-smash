@@ -5,6 +5,11 @@
 
 ---
 
+### Communication Guideline
+- Always be concise; elaborate only when explicitly requested.
+- If more context is needed, ask one focused clarifying question.
+- Provide concrete actions or patches when asked, otherwise wait for instruction.
+
 ## Overview
 
 **App Name: Sayang Smash**
