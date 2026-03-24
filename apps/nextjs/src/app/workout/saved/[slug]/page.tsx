@@ -61,13 +61,18 @@ export default function WorkoutSavedPage({
 
       {/* Content */}
       <div className="flex flex-1 flex-col items-center justify-center px-5 py-6">
-        {/* Link box */}
-        <div className="mb-6 w-full max-w-[280px] border-2 border-orange-500 bg-[#1e293b] p-4">
-          <p className="mb-2 text-[10px] text-[#64748b] uppercase">Link</p>
+        {/* Link box - click to copy */}
+        <button
+          onClick={handleCopy}
+          className="mb-6 w-full max-w-[280px] cursor-pointer border-2 border-orange-500 bg-[#1e293b] p-4 text-left transition-colors hover:bg-[#253347]"
+        >
+          <p className="mb-2 text-[10px] text-[#64748b] uppercase">
+            {copied ? "Copied!" : "Tap to copy link"}
+          </p>
           <p className="font-mono text-sm font-bold break-all text-orange-500">
             {workoutUrl}
           </p>
-        </div>
+        </button>
 
         {/* QR Code */}
         <div className="border-2 border-[#334155] bg-[#1e293b] p-4">
@@ -87,13 +92,7 @@ export default function WorkoutSavedPage({
           onClick={handleShare}
           className="font-display font-600 w-full cursor-pointer border border-[#334155] bg-[#1e293b] py-3 text-sm tracking-wider text-[#e2e8f0] uppercase"
         >
-          {copied ? "Copied!" : "Share"}
-        </button>
-        <button
-          onClick={handleCopy}
-          className="font-display font-600 w-full cursor-pointer border border-[#334155] bg-[#1e293b] py-3 text-sm tracking-wider text-[#e2e8f0] uppercase"
-        >
-          {copied ? "Copied!" : "Copy"}
+          Share
         </button>
         <button
           onClick={() => router.push(`/workout/${slug}`)}
