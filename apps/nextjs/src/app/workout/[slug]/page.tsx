@@ -131,9 +131,9 @@ export default function DoWorkoutPage({
           </p>
           <button
             onClick={() => setShowCompleted(!showCompleted)}
-            className="font-display cursor-pointer text-[10px] tracking-wider text-[#64748b] uppercase"
+            className="font-display cursor-pointer text-[9px] tracking-wider text-[#64748b] uppercase"
           >
-            {showCompleted ? "Hide done" : "Show done"}
+            {showCompleted ? "Hide" : "Show"}
           </button>
         </div>
       </div>

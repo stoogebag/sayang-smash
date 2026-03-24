@@ -96,7 +96,7 @@ export default function CreateWorkoutPage() {
               </div>
               <button
                 onClick={() => removeExercise(i)}
-                className="cursor-pointer"
+                className="flex-shrink-0 cursor-pointer"
               >
                 <svg
                   className="h-4 w-4 text-[#475569]"

@@ -68,6 +68,8 @@ export function SelectExerciseModal({
 
   function handleConfirmParams() {
     if (!selectedExercise) return;
+    if (selectedExercise.type === "REPS" && !reps) return;
+    if (selectedExercise.type === "TIME" && !time) return;
     const params: ExerciseParams = {
       exercise_uid: selectedExercise.uid,
       exercise_name: selectedExercise.name,
@@ -112,7 +114,7 @@ export function SelectExerciseModal({
           </h2>
           <button
             onClick={resetAndClose}
-            className="font-display font-700 cursor-pointer text-sm tracking-wider text-[#64748b] uppercase"
+            className="font-display font-700 cursor-pointer text-xs tracking-wider text-[#64748b] uppercase"
           >
             Close
           </button>
