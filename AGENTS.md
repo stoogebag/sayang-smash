@@ -25,6 +25,10 @@ This includes:
 3. **Execute**: Only proceed after the user gives the go-ahead
 4. **Report**: Let the user know what was done and provide any relevant information (commit hashes, links, etc.)
 
+### Git Commits and Pushing
+
+**Do NOT push to git unless explicitly told to do so.** Create commits if instructed, but never push without explicit user instruction. Always ask before pushing.
+
 ### When in Doubt
 
 If you're uncertain whether something counts as a "change," err on the side of caution and ask the user. It's better to ask unnecessarily than to make unwanted modifications.
