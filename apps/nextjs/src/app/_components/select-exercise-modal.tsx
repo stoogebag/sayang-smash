@@ -114,9 +114,21 @@ export function SelectExerciseModal({
           </h2>
           <button
             onClick={resetAndClose}
-            className="font-display font-700 cursor-pointer text-xs tracking-wider text-[#64748b] uppercase"
+            className="flex h-6 w-6 flex-shrink-0 cursor-pointer items-center justify-center text-[#64748b]"
           >
-            Close
+            <svg
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
           </button>
         </div>
 
