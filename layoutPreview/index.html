@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sayang Smash — Concept A Layout Preview</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              "a-display": ['"Barlow Condensed"', "sans-serif"],
+              "a-body": ["Barlow", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background: #0f0f0f;
+      }
+      .phone {
+        width: 375px;
+        min-height: 700px;
+        position: relative;
+        overflow: hidden;
+        flex-shrink: 0;
+      }
+      .concept-col {
+        width: 420px;
+        flex-shrink: 0;
+      }
+      .a-bar {
+        width: 3px;
+        background: #f97316;
+        height: 100%;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body class="text-white antialiased">
+    <!-- Header -->
+    <header class="border-b border-neutral-800 px-4 py-10 text-center">
+      <h1 class="text-3xl font-bold tracking-tight">
+        Sayang Smash — Concept A
+      </h1>
+      <p class="mt-2 text-sm text-neutral-500">
+        Industrial / Utilitarian. Barlow Condensed, Orange #F97316, Sharp edges,
+        Accent bars.
+      </p>
+    </header>
+
+    <!-- ============================================================ -->
+    <!-- CONCEPT A: INDUSTRIAL / UTILITARIAN -->
+    <!-- ============================================================ -->
+    <div class="overflow-x-auto">
+      <div class="flex min-w-max gap-8 p-8">
+        <div class="concept-col space-y-8">
+          <!-- A: LANDING -->
+          <div
+            class="phone flex flex-col border-2 border-[#2d2d2d] bg-[#0f0f0f]"
+          >
+            <p
+              class="font-a-display pt-3 text-center text-[10px] tracking-widest text-[#808080] uppercase"
+            >
+              Landing
+            </p>
+            <div
+              class="flex flex-1 flex-col items-center justify-center px-10 py-16"
+            >
+              <div class="relative mb-2 flex items-center gap-2">
+                <div class="a-bar h-16"></div>
+                <div>
+                  <span
+                    class="font-a-display font-900 text-5xl leading-none tracking-tight text-[#e5e5e5] uppercase"
+                    >Sayang</span
+                  >
+                  <span
+                    class="font-a-display font-900 -mt-1 block text-5xl leading-none tracking-tight text-[#f97316] uppercase"
+                    >Smash</span
+                  >
+                </div>
+              </div>
+              <p
+                class="font-a-display mt-3 text-[11px] tracking-[0.3em] text-[#808080] uppercase"
+              >
+                Workout Logger
+              </p>
+
+              <div class="mt-14 w-full space-y-3">
+                <button
+                  class="font-a-display font-700 w-full cursor-pointer border-2 border-[#f97316] bg-[#f97316] py-4 text-base tracking-wider text-white uppercase"
+                >
+                  Create Workout
+                </button>
+                <button
+                  class="font-a-display font-600 w-full cursor-pointer border-2 border-[#22c55e] bg-[#22c55e] py-4 text-base tracking-wider text-white uppercase"
+                >
+                  Random Workout
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- A: CREATE WORKOUT -->
+          <div
+            class="phone flex flex-col border-2 border-[#2d2d2d] bg-[#0f0f0f]"
+          >
+            <p
+              class="font-a-display pt-3 text-center text-[10px] tracking-widest text-[#808080] uppercase"
+            >
+              Create Workout
+            </p>
+            <div
+              class="border-b-2 border-[#2d2d2d] bg-[#1a1a1a] px-5 pt-5 pb-3"
+            >
+              <label
+                class="font-a-display text-[10px] tracking-[0.2em] text-[#808080] uppercase"
+                >Workout Name</label
+              >
+              <div
+                class="font-a-display font-800 mt-1 border-b-2 border-[#2d2d2d] pb-2 text-xl tracking-wide text-[#e5e5e5] uppercase"
+              >
+                Monday 23/03/26
+              </div>
+            </div>
+
+            <div class="flex-1 space-y-3 px-5 py-4">
+              <div
+                class="flex overflow-hidden border-2 border-[#2d2d2d] bg-[#1a1a1a]"
+              >
+                <div class="a-bar"></div>
+                <div class="flex flex-1 items-center justify-between p-4">
+                  <div>
+                    <h3
+                      class="font-a-display font-700 text-sm tracking-wide text-[#e5e5e5] uppercase"
+                    >
+                      Bench Press
+                    </h3>
+                    <p class="font-a-body mt-0.5 text-xs text-[#a3a3a3]">
+                      12 reps · 60 kg
+                    </p>
+                  </div>
+                  <svg
+                    class="h-4 w-4 cursor-pointer text-[#808080]"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div
+                class="flex overflow-hidden border-2 border-[#2d2d2d] bg-[#1a1a1a]"
+              >
+                <div class="a-bar"></div>
+                <div class="flex flex-1 items-center justify-between p-4">
+                  <div>
+                    <h3
+                      class="font-a-display font-700 text-sm tracking-wide text-[#e5e5e5] uppercase"
+                    >
+                      Plank
+                    </h3>
+                    <p class="font-a-body mt-0.5 text-xs text-[#a3a3a3]">
+                      60 seconds
+                    </p>
+                  </div>
+                  <svg
+                    class="h-4 w-4 cursor-pointer text-[#808080]"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div
+                class="flex overflow-hidden border-2 border-[#2d2d2d] bg-[#1a1a1a]"
+              >
+                <div class="a-bar"></div>
+                <div class="flex flex-1 items-center justify-between p-4">
+                  <div>
+                    <h3
+                      class="font-a-display font-700 text-sm tracking-wide text-[#e5e5e5] uppercase"
+                    >
+                      Squats
+                    </h3>
+                    <p class="font-a-body mt-0.5 text-xs text-[#a3a3a3]">
+                      15 reps · 80 kg
+                    </p>
+                  </div>
+                  <svg
+                    class="h-4 w-4 cursor-pointer text-[#808080]"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-3 border-t-2 border-[#2d2d2d] px-5 pb-5">
+              <button
+                class="font-a-display font-600 w-full cursor-pointer border-2 border-dashed border-[#808080] bg-[#1a1a1a] py-3 text-sm tracking-wider text-[#a3a3a3] uppercase"
+              >
+                + Add Exercise
+              </button>
+              <button
+                class="font-a-display font-700 w-full cursor-pointer border-2 border-[#22c55e] bg-[#22c55e] py-4 text-base tracking-wider text-white uppercase"
+              >
+                Save Workout
+              </button>
+            </div>
+          </div>
+
+          <!-- A: WORKOUT SCREEN -->
+          <div
+            class="phone flex flex-col border-2 border-[#2d2d2d] bg-[#0f0f0f]"
+          >
+            <p
+              class="font-a-display pt-3 text-center text-[10px] tracking-widest text-[#808080] uppercase"
+            >
+              Do Workout
+            </p>
+            <div
+              class="border-b-2 border-[#2d2d2d] bg-[#1a1a1a] px-5 pt-5 pb-3"
+            >
+              <h1
+                class="font-a-display font-800 text-xl tracking-wide text-[#e5e5e5] uppercase"
+              >
+                Monday 23/03/26
+              </h1>
+              <p class="font-a-body mt-1 text-xs text-[#a3a3a3]">3 remaining</p>
+            </div>
+            <div class="flex-1 space-y-4 px-5 py-4">
+              <!-- Reps -->
+              <div class="border-2 border-[#2d2d2d] bg-[#1a1a1a]">
+                <div class="flex items-center justify-between p-4">
+                  <div>
+                    <h3
+                      class="font-a-display font-700 text-sm tracking-wide text-[#e5e5e5] uppercase"
+                    >
+                      Bench Press
+                    </h3>
+                    <p class="font-a-body text-[10px] text-[#808080]">60 kg</p>
+                  </div>
+                  <div>
+                    <span
+                      class="font-a-display font-900 text-3xl text-[#f97316]"
+                      >7</span
+                    ><span class="font-a-display text-sm text-[#808080]">
+                      / 12</span
+                    >
+                  </div>
+                </div>
+                <div class="flex border-t-2 border-[#2d2d2d]">
+                  <button
+                    class="font-a-display font-700 flex-1 cursor-pointer border-r-2 border-[#2d2d2d] py-3 text-sm text-[#e5e5e5] transition-colors hover:bg-[#2d2d2d]"
+                  >
+                    +10
+                  </button>
+                  <button
+                    class="font-a-display font-700 flex-1 cursor-pointer border-r-2 border-[#2d2d2d] py-3 text-sm text-[#e5e5e5] transition-colors hover:bg-[#2d2d2d]"
+                  >
+                    +5
+                  </button>
+                  <button
+                    class="font-a-display font-700 flex-1 cursor-pointer py-3 text-sm text-red-400 transition-colors hover:bg-[#2d2d2d]"
+                  >
+                    −1
+                  </button>
+                </div>
+              </div>
+              <!-- Timer -->
+              <div class="border-2 border-[#2d2d2d] bg-[#1a1a1a]">
+                <div class="flex items-center justify-between p-4">
+                  <h3
+                    class="font-a-display font-700 text-sm tracking-wide text-[#e5e5e5] uppercase"
+                  >
+                    Plank
+                  </h3>
+                  <span
+                    class="font-a-display font-900 text-3xl text-[#e5e5e5] tabular-nums"
+                    >1:00</span
+                  >
+                </div>
+                <button
+                  class="font-a-display font-700 w-full cursor-pointer border-t-2 border-[#2d2d2d] bg-[#22c55e] py-3 text-sm tracking-wider text-white uppercase"
+                >
+                  Start
+                </button>
+              </div>
+            </div>
+            <div class="border-t-2 border-[#2d2d2d] px-5 pb-5">
+              <button
+                class="font-a-display font-800 w-full cursor-pointer border-2 border-[#22c55e] bg-[#22c55e] py-4 text-base tracking-wider text-white uppercase"
+              >
+                Me Done
+              </button>
+            </div>
+          </div>
+
+          <!-- A: SAVED -->
+          <div
+            class="phone flex flex-col border-2 border-[#2d2d2d] bg-[#0f0f0f]"
+          >
+            <p
+              class="font-a-display pt-3 text-center text-[10px] tracking-widest text-[#808080] uppercase"
+            >
+              Saved
+            </p>
+            <div
+              class="border-b-2 border-[#2d2d2d] bg-[#1a1a1a] px-5 pt-5 pb-3"
+            >
+              <h1
+                class="font-a-display font-800 text-xl tracking-wide text-[#e5e5e5] uppercase"
+              >
+                Live!
+              </h1>
+              <p class="font-a-body mt-1 text-xs text-[#a3a3a3]">Share now</p>
+            </div>
+            <div
+              class="flex flex-1 flex-col items-center justify-center px-5 py-6"
+            >
+              <div class="mb-6 border-3 border-[#f97316] bg-[#1a1a1a] p-4">
+                <p class="mb-2 text-[10px] text-[#808080] uppercase">Link</p>
+                <p
+                  style="
+                    font-family: &quot;Courier New&quot;, monospace;
+                    font-size: 0.85rem;
+                    color: #f97316;
+                    font-weight: bold;
+                    margin: 0;
+                  "
+                >
+                  sayang.fit/ab3d2
+                </p>
+              </div>
+              <div
+                style="
+                  width: 120px;
+                  height: 120px;
+                  background: #1a1a1a;
+                  border: 2px solid #2d2d2d;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font-family: &quot;Barlow Condensed&quot;;
+                  font-size: 0.8rem;
+                  color: #808080;
+                  text-transform: uppercase;
+                  font-weight: 700;
+                "
+              >
+                [QR CODE]
+              </div>
+            </div>
+            <div class="space-y-3 border-t-2 border-[#2d2d2d] px-5 pb-5">
+              <button
+                class="font-a-display font-600 w-full cursor-pointer border-2 border-[#2d2d2d] bg-[#1a1a1a] py-3 text-sm tracking-wider text-[#e5e5e5] uppercase"
+              >
+                Copy
+              </button>
+              <button
+                class="font-a-display font-700 w-full cursor-pointer border-2 border-[#f97316] bg-[#f97316] py-4 text-base tracking-wider text-white uppercase"
+              >
+                Start
+              </button>
+            </div>
+          </div>
+
+          <!-- A: SUMMARY -->
+          <div
+            class="phone flex flex-col border-2 border-[#2d2d2d] bg-[#0f0f0f]"
+          >
+            <p
+              class="font-a-display pt-3 text-center text-[10px] tracking-widest text-[#808080] uppercase"
+            >
+              Summary
+            </p>
+            <div
+              class="flex items-center gap-2 border-b-2 border-[#2d2d2d] bg-[#1a1a1a] px-5 pt-5 pb-3"
+            >
+              <div class="a-bar h-6" style="background: #22c55e"></div>
+              <h1
+                class="font-a-display font-800 text-xl tracking-wide text-[#e5e5e5] uppercase"
+              >
+                Done!
+              </h1>
+            </div>
+            <div class="flex-1 px-5 py-4">
+              <div class="border-2 border-[#2d2d2d] bg-[#1a1a1a]">
+                <div style="padding: 1rem; border-bottom: 2px solid #2d2d2d">
+                  <h3
+                    class="font-a-display font-700 text-sm text-[#e5e5e5] uppercase"
+                  >
+                    Push-ups
+                  </h3>
+                  <p
+                    style="
+                      font-size: 0.85rem;
+                      color: #a3a3a3;
+                      margin-top: 0.25rem;
+                    "
+                  >
+                    20 REPS
+                  </p>
+                </div>
+                <div style="padding: 1rem; border-bottom: 2px solid #2d2d2d">
+                  <h3
+                    class="font-a-display font-700 text-sm text-[#e5e5e5] uppercase"
+                  >
+                    Squats
+                  </h3>
+                  <p
+                    style="
+                      font-size: 0.85rem;
+                      color: #a3a3a3;
+                      margin-top: 0.25rem;
+                    "
+                  >
+                    15 REPS, 20kg
+                  </p>
+                </div>
+                <div style="padding: 1rem">
+                  <h3
+                    class="font-a-display font-700 text-sm text-[#e5e5e5] uppercase"
+                  >
+                    Running
+                  </h3>
+                  <p
+                    style="
+                      font-size: 0.85rem;
+                      color: #a3a3a3;
+                      margin-top: 0.25rem;
+                    "
+                  >
+                    300 SEC
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="px-5 pb-5">
+              <button
+                class="font-a-display font-700 w-full cursor-pointer border-2 border-[#2d2d2d] bg-[#1a1a1a] py-4 text-base tracking-wider text-[#e5e5e5] uppercase"
+              >
+                New
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

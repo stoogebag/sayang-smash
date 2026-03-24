@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sayang Smash — Layout Comparison</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            // Concept A
+            'a-display': ['"Barlow Condensed"', 'sans-serif'],
+            'a-body': ['Barlow', 'sans-serif'],
+            // Concept B
+            'b-display': ['"Space Grotesk"', 'sans-serif'],
+            'b-body': ['Inter', 'sans-serif'],
+            // Concept C
+            'c-display': ['Outfit', 'sans-serif'],
+            'c-body': ['Outfit', 'sans-serif'],
+            'c-mono': ['"Space Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background: #0a0a0a; }
+    .phone {
+      width: 375px;
+      min-height: 700px;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .concept-col {
+      width: 420px;
+      flex-shrink: 0;
+    }
+    /* Concept A accent bar */
+    .a-bar { width: 4px; background: linear-gradient(180deg, #f97316, #ea580c); }
+    /* Concept B glow */
+    .b-glow { box-shadow: 0 0 30px rgba(168,85,247,0.15); }
+    /* Concept C gradient mesh */
+    .c-mesh {
+      background: radial-gradient(ellipse at 20% 0%, rgba(56,189,248,0.08) 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 100%, rgba(251,146,60,0.06) 0%, transparent 60%);
+    }
+  </style>
+</head>
+<body class="text-white antialiased">
+
+  <!-- Header -->
+  <header class="text-center py-10 border-b border-neutral-800 px-4">
+    <h1 class="text-3xl font-bold tracking-tight">Sayang Smash — Layout Comparison</h1>
+    <p class="text-neutral-500 mt-2 text-sm">3 concepts side by side. Scroll horizontally. Each column shows: Landing, Create Workout, Workout Screen.</p>
+    <nav class="mt-6 flex justify-center gap-4 text-xs">
+      <a href="#concept-a" class="px-4 py-2 bg-orange-500/20 text-orange-400 border border-orange-500/30">A: Industrial</a>
+      <a href="#concept-b" class="px-4 py-2 bg-purple-500/20 text-purple-400 border border-purple-500/30">B: Neon Minimal</a>
+      <a href="#concept-c" class="px-4 py-2 bg-sky-500/20 text-sky-400 border border-sky-500/30">C: Soft Modern</a>
+    </nav>
+  </header>
+
+  <!-- ============================================================ -->
+  <!-- COMPARISON GRID -->
+  <!-- ============================================================ -->
+  <div class="overflow-x-auto">
+    <div class="flex gap-8 p-8 min-w-max">
+
+      <!-- ======================================================== -->
+      <!-- CONCEPT A: INDUSTRIAL / UTILITARIAN -->
+      <!-- Barlow Condensed, Orange+Green, Sharp edges, Accent bars -->
+      <!-- ======================================================== -->
+      <div id="concept-a" class="concept-col space-y-8">
+        <div class="text-center pb-4 border-b border-orange-500/30">
+          <h2 class="font-a-display text-xl font-800 uppercase tracking-wider text-orange-400">Concept A</h2>
+          <p class="text-neutral-500 text-xs mt-1">Industrial / Utilitarian</p>
+          <p class="text-neutral-600 text-[10px] mt-1">Barlow Condensed &middot; Orange #F97316 &middot; Sharp edges &middot; Accent bars</p>
+        </div>
+
+        <!-- A: LANDING -->
+        <div class="phone bg-[#0f172a] border border-[#334155] flex flex-col">
+          <p class="text-[10px] font-a-display uppercase tracking-widest text-[#64748b] text-center pt-3">Landing</p>
+          <div class="flex-1 flex flex-col items-center justify-center px-10 py-16">
+            <div class="relative mb-2">
+              <span class="font-a-display text-5xl font-900 uppercase tracking-tight text-[#f8fafc] leading-none">Sayang</span>
+              <div class="absolute -right-2 top-0 w-2 h-full bg-orange-500"></div>
+            </div>
+            <span class="font-a-display text-5xl font-900 uppercase tracking-tight text-orange-500 leading-none -mt-1">Smash</span>
+            <p class="font-a-display text-[11px] uppercase tracking-[0.3em] text-[#64748b] mt-3">Workout Logger</p>
+
+            <div class="mt-14 w-full space-y-3">
+              <button class="w-full py-4 bg-orange-500 text-white font-a-display font-700 uppercase tracking-wider text-base cursor-pointer">
+                Create Workout
+              </button>
+              <button class="w-full py-4 bg-[#1e293b] text-[#e2e8f0] font-a-display font-600 uppercase tracking-wider text-base border-l-4 border-orange-500 cursor-pointer">
+                Random Workout
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- A: CREATE WORKOUT -->
+        <div class="phone bg-[#0f172a] border border-[#334155] flex flex-col">
+          <p class="text-[10px] font-a-display uppercase tracking-widest text-[#64748b] text-center pt-3">Create Workout</p>
+          <div class="px-5 pt-5 pb-3 border-b border-[#334155] bg-[#172033]">
+            <label class="text-[10px] font-a-display uppercase tracking-[0.2em] text-[#64748b]">Workout Name</label>
+            <div class="mt-1 text-xl font-a-display font-800 uppercase tracking-wide text-[#f8fafc] border-b-2 border-[#334155] pb-2">Monday 23/03/26</div>
+          </div>
+
+          <div class="flex-1 px-5 py-4 space-y-3">
+            <div class="flex bg-[#1e293b] border border-[#334155] overflow-hidden">
+              <div class="a-bar"></div>
+              <div class="flex-1 flex items-center justify-between p-4">
+                <div>
+                  <h3 class="font-a-display font-700 uppercase tracking-wide text-[#f8fafc] text-sm">Bench Press</h3>
+                  <p class="text-xs text-[#94a3b8] font-a-body mt-0.5">12 reps &middot; 60 kg</p>
+                </div>
+                <svg class="w-4 h-4 text-[#475569] cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+              </div>
+            </div>
+            <div class="flex bg-[#1e293b] border border-[#334155] overflow-hidden">
+              <div class="a-bar"></div>
+              <div class="flex-1 flex items-center justify-between p-4">
+                <div>
+                  <h3 class="font-a-display font-700 uppercase tracking-wide text-[#f8fafc] text-sm">Plank</h3>
+                  <p class="text-xs text-[#94a3b8] font-a-body mt-0.5">60 seconds</p>
+                </div>
+                <svg class="w-4 h-4 text-[#475569] cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+              </div>
+            </div>
+            <div class="flex bg-[#1e293b] border border-[#334155] overflow-hidden">
+              <div class="a-bar"></div>
+              <div class="flex-1 flex items-center justify-between p-4">
+                <div>
+                  <h3 class="font-a-display font-700 uppercase tracking-wide text-[#f8fafc] text-sm">Squats</h3>
+                  <p class="text-xs text-[#94a3b8] font-a-body mt-0.5">15 reps &middot; 80 kg</p>
+                </div>
+                <svg class="w-4 h-4 text-[#475569] cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-5 pb-5 space-y-3 border-t border-[#334155]">
+            <button class="w-full py-3 bg-[#1e293b] text-[#94a3b8] font-a-display font-600 uppercase tracking-wider text-sm border border-dashed border-[#475569] cursor-pointer">+ Add Exercise</button>
+            <button class="w-full py-4 bg-emerald-500 text-white font-a-display font-700 uppercase tracking-wider text-base cursor-pointer">Save Workout</button>
+          </div>
+        </div>
+
+        <!-- A: WORKOUT SCREEN -->
+        <div class="phone bg-[#0f172a] border border-[#334155] flex flex-col">
+          <p class="text-[10px] font-a-display uppercase tracking-widest text-[#64748b] text-center pt-3">Do Workout</p>
+          <div class="px-5 pt-5 pb-3 border-b border-[#334155] bg-[#172033]">
+            <h1 class="font-a-display text-xl font-800 uppercase tracking-wide text-[#f8fafc]">Monday 23/03/26</h1>
+            <p class="text-xs text-[#94a3b8] font-a-body mt-1">3 remaining</p>
+          </div>
+          <div class="flex-1 px-5 py-4 space-y-4">
+            <!-- Reps -->
+            <div class="bg-[#1e293b] border border-[#334155]">
+              <div class="flex items-center justify-between p-4">
+                <div>
+                  <h3 class="font-a-display font-700 uppercase tracking-wide text-[#f8fafc] text-sm">Bench Press</h3>
+                  <p class="text-[10px] text-[#64748b] font-a-body">60 kg</p>
+                </div>
+                <div><span class="text-3xl font-a-display font-900 text-orange-400">7</span><span class="text-[#64748b] text-sm font-a-display"> / 12</span></div>
+              </div>
+              <div class="flex border-t border-[#334155]">
+                <button class="flex-1 py-3 text-[#e2e8f0] font-a-display font-700 text-sm border-r border-[#334155] cursor-pointer hover:bg-[#334155] transition-colors">+10</button>
+                <button class="flex-1 py-3 text-[#e2e8f0] font-a-display font-700 text-sm border-r border-[#334155] cursor-pointer hover:bg-[#334155] transition-colors">+5</button>
+                <button class="flex-1 py-3 text-red-400 font-a-display font-700 text-sm cursor-pointer hover:bg-[#334155] transition-colors">&minus;1</button>
+              </div>
+            </div>
+            <!-- Timer -->
+            <div class="bg-[#1e293b] border border-[#334155]">
+              <div class="flex items-center justify-between p-4">
+                <h3 class="font-a-display font-700 uppercase tracking-wide text-[#f8fafc] text-sm">Plank</h3>
+                <span class="text-3xl font-a-display font-900 text-[#f8fafc] tabular-nums">1:00</span>
+              </div>
+              <button class="w-full py-3 bg-emerald-500 text-white font-a-display font-700 uppercase tracking-wider text-sm border-t border-[#334155] cursor-pointer">Start</button>
+            </div>
+          </div>
+          <div class="px-5 pb-5 border-t border-[#334155]">
+            <button class="w-full py-4 bg-emerald-500 text-white font-a-display font-800 uppercase tracking-wider text-base cursor-pointer">Me Done</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======================================================== -->
+      <!-- CONCEPT B: NEON MINIMAL -->
+      <!-- Space Grotesk, Purple+Cyan, Rounded, Glow effects -->
+      <!-- ======================================================== -->
+      <div id="concept-b" class="concept-col space-y-8">
+        <div class="text-center pb-4 border-b border-purple-500/30">
+          <h2 class="font-b-display text-xl font-700 text-purple-400">Concept B</h2>
+          <p class="text-neutral-500 text-xs mt-1">Neon Minimal</p>
+          <p class="text-neutral-600 text-[10px] mt-1">Space Grotesk &middot; Purple #A855F7 &middot; Rounded &middot; Glow</p>
+        </div>
+
+        <!-- B: LANDING -->
+        <div class="phone bg-[#0c0a1a] border border-purple-900/40 rounded-3xl flex flex-col b-glow">
+          <p class="text-[10px] font-b-body text-purple-500/60 text-center pt-4 tracking-wider">Landing</p>
+          <div class="flex-1 flex flex-col items-center justify-center px-10 py-16">
+            <div class="mb-3">
+              <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-cyan-400 flex items-center justify-center">
+                <span class="font-b-display text-2xl font-700 text-white">SS</span>
+              </div>
+            </div>
+            <h1 class="font-b-display text-3xl font-700 text-white tracking-tight">sayang smash</h1>
+            <p class="text-purple-400/60 text-sm font-b-body mt-1">log it. share it. smash it.</p>
+
+            <div class="mt-14 w-full space-y-4">
+              <button class="w-full py-4 bg-gradient-to-r from-purple-500 to-purple-600 text-white font-b-display font-600 rounded-2xl text-base cursor-pointer hover:from-purple-600 hover:to-purple-700 transition-all shadow-lg shadow-purple-500/20">
+                Create Workout
+              </button>
+              <button class="w-full py-4 bg-white/5 text-purple-300 font-b-display font-500 rounded-2xl text-base border border-purple-500/20 cursor-pointer hover:bg-white/10 transition-all backdrop-blur">
+                Random Workout
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- B: CREATE WORKOUT -->
+        <div class="phone bg-[#0c0a1a] border border-purple-900/40 rounded-3xl flex flex-col b-glow">
+          <p class="text-[10px] font-b-body text-purple-500/60 text-center pt-4 tracking-wider">Create Workout</p>
+          <div class="px-6 pt-5 pb-4">
+            <p class="text-[10px] text-purple-400/50 font-b-body uppercase tracking-wider">Workout Name</p>
+            <div class="mt-1 text-xl font-b-display font-600 text-white">Monday 23/03/26</div>
+          </div>
+
+          <div class="flex-1 px-5 py-3 space-y-3">
+            <div class="bg-white/5 rounded-2xl p-4 border border-white/5 backdrop-blur">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="font-b-display font-600 text-white text-sm">Bench Press</h3>
+                  <p class="text-xs text-purple-300/50 font-b-body mt-0.5">12 reps &middot; 60 kg</p>
+                </div>
+                <svg class="w-4 h-4 text-purple-500/40 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+              </div>
+            </div>
+            <div class="bg-white/5 rounded-2xl p-4 border border-white/5 backdrop-blur">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="font-b-display font-600 text-white text-sm">Plank</h3>
+                  <p class="text-xs text-purple-300/50 font-b-body mt-0.5">60 seconds</p>
+                </div>
+                <svg class="w-4 h-4 text-purple-500/40 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+              </div>
+            </div>
+            <div class="bg-white/5 rounded-2xl p-4 border border-white/5 backdrop-blur">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="font-b-display font-600 text-white text-sm">Squats</h3>
+                  <p class="text-xs text-purple-300/50 font-b-body mt-0.5">15 reps &middot; 80 kg</p>
+                </div>
+                <svg class="w-4 h-4 text-purple-500/40 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-5 pb-6 space-y-3">
+            <button class="w-full py-3 bg-white/5 text-purple-300/60 font-b-display font-500 rounded-2xl text-sm border border-dashed border-purple-500/20 cursor-pointer">+ Add Exercise</button>
+            <button class="w-full py-4 bg-gradient-to-r from-cyan-400 to-cyan-500 text-white font-b-display font-600 rounded-2xl text-base cursor-pointer shadow-lg shadow-cyan-500/20">Save Workout</button>
+          </div>
+        </div>
+
+        <!-- B: WORKOUT SCREEN -->
+        <div class="phone bg-[#0c0a1a] border border-purple-900/40 rounded-3xl flex flex-col b-glow">
+          <p class="text-[10px] font-b-body text-purple-500/60 text-center pt-4 tracking-wider">Do Workout</p>
+          <div class="px-6 pt-5 pb-3">
+            <h1 class="font-b-display text-xl font-600 text-white">Monday 23/03/26</h1>
+            <p class="text-xs text-purple-300/40 font-b-body mt-1">3 remaining</p>
+          </div>
+          <div class="flex-1 px-5 py-3 space-y-4">
+            <!-- Reps -->
+            <div class="bg-white/5 rounded-2xl p-4 border border-white/5">
+              <div class="flex items-center justify-between mb-3">
+                <div>
+                  <h3 class="font-b-display font-600 text-white text-sm">Bench Press</h3>
+                  <p class="text-[10px] text-purple-300/40 font-b-body">60 kg</p>
+                </div>
+                <div><span class="text-3xl font-b-display font-700 text-purple-400">7</span><span class="text-purple-500/40 text-sm"> / 12</span></div>
+              </div>
+              <div class="flex gap-2">
+                <button class="flex-1 py-2.5 bg-purple-500/10 text-purple-300 font-b-display font-600 rounded-xl text-sm cursor-pointer hover:bg-purple-500/20 transition-colors">+10</button>
+                <button class="flex-1 py-2.5 bg-purple-500/10 text-purple-300 font-b-display font-600 rounded-xl text-sm cursor-pointer hover:bg-purple-500/20 transition-colors">+5</button>
+                <button class="flex-1 py-2.5 bg-red-500/10 text-red-400 font-b-display font-600 rounded-xl text-sm cursor-pointer hover:bg-red-500/20 transition-colors">&minus;1</button>
+              </div>
+            </div>
+            <!-- Timer -->
+            <div class="bg-white/5 rounded-2xl p-4 border border-white/5">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-b-display font-600 text-white text-sm">Plank</h3>
+                <span class="text-3xl font-b-display font-700 text-white tabular-nums">1:00</span>
+              </div>
+              <button class="w-full py-2.5 bg-gradient-to-r from-cyan-400 to-cyan-500 text-white font-b-display font-600 rounded-xl text-sm cursor-pointer shadow-lg shadow-cyan-500/20">Start</button>
+            </div>
+          </div>
+          <div class="px-5 pb-6">
+            <button class="w-full py-4 bg-gradient-to-r from-purple-500 to-purple-600 text-white font-b-display font-600 rounded-2xl text-base cursor-pointer shadow-lg shadow-purple-500/20">Me Done</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======================================================== -->
+      <!-- CONCEPT C: SOFT MODERN -->
+      <!-- Outfit, Sky+Warm, Rounded-lg, Subtle gradients, Clean -->
+      <!-- ======================================================== -->
+      <div id="concept-c" class="concept-col space-y-8">
+        <div class="text-center pb-4 border-b border-sky-500/30">
+          <h2 class="font-c-display text-xl font-700 text-sky-400">Concept C</h2>
+          <p class="text-neutral-500 text-xs mt-1">Soft Modern</p>
+          <p class="text-neutral-600 text-[10px] mt-1">Outfit &middot; Sky #38BDF8 &middot; Rounded &middot; Clean spacing</p>
+        </div>
+
+        <!-- C: LANDING -->
+        <div class="phone bg-[#111318] border border-[#1e2028] rounded-2xl flex flex-col c-mesh">
+          <p class="text-[10px] font-c-body text-neutral-600 text-center pt-4 tracking-wider">Landing</p>
+          <div class="flex-1 flex flex-col items-center justify-center px-10 py-16">
+            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-sky-400 to-orange-400 flex items-center justify-center mb-5 shadow-lg shadow-sky-500/10">
+              <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <h1 class="font-c-display text-3xl font-800 text-white tracking-tight">Sayang Smash</h1>
+            <p class="text-neutral-500 text-sm font-c-body mt-2">Your workout companion</p>
+
+            <div class="mt-14 w-full space-y-3">
+              <button class="w-full py-4 bg-sky-500 hover:bg-sky-600 text-white font-c-display font-600 rounded-xl text-base cursor-pointer transition-colors shadow-lg shadow-sky-500/15">
+                Create Workout
+              </button>
+              <button class="w-full py-4 bg-[#1a1d24] hover:bg-[#22262e] text-neutral-300 font-c-display font-500 rounded-xl text-base border border-[#2a2d35] cursor-pointer transition-colors">
+                Random Workout
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- C: CREATE WORKOUT -->
+        <div class="phone bg-[#111318] border border-[#1e2028] rounded-2xl flex flex-col c-mesh">
+          <p class="text-[10px] font-c-body text-neutral-600 text-center pt-4 tracking-wider">Create Workout</p>
+          <div class="px-6 pt-5 pb-4 border-b border-[#1e2028]">
+            <p class="text-[10px] text-neutral-500 font-c-body uppercase tracking-wider">Workout Name</p>
+            <div class="mt-1 text-xl font-c-display font-700 text-white">Monday 23/03/26</div>
+          </div>
+
+          <div class="flex-1 px-5 py-4 space-y-3">
+            <div class="bg-[#1a1d24] rounded-xl p-4 border border-[#2a2d35]">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="font-c-display font-600 text-white text-sm">Bench Press</h3>
+                  <p class="text-xs text-neutral-500 font-c-body mt-0.5">12 reps &middot; 60 kg</p>
+                </div>
+                <svg class="w-4 h-4 text-neutral-600 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+              </div>
+            </div>
+            <div class="bg-[#1a1d24] rounded-xl p-4 border border-[#2a2d35]">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="font-c-display font-600 text-white text-sm">Plank</h3>
+                  <p class="text-xs text-neutral-500 font-c-body mt-0.5">60 seconds</p>
+                </div>
+                <svg class="w-4 h-4 text-neutral-600 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+              </div>
+            </div>
+            <div class="bg-[#1a1d24] rounded-xl p-4 border border-[#2a2d35]">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="font-c-display font-600 text-white text-sm">Squats</h3>
+                  <p class="text-xs text-neutral-500 font-c-body mt-0.5">15 reps &middot; 80 kg</p>
+                </div>
+                <svg class="w-4 h-4 text-neutral-600 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-5 pb-6 space-y-3 border-t border-[#1e2028]">
+            <button class="w-full py-3 bg-[#1a1d24] text-neutral-400 font-c-display font-500 rounded-xl text-sm border border-dashed border-[#2a2d35] cursor-pointer">+ Add Exercise</button>
+            <button class="w-full py-4 bg-sky-500 hover:bg-sky-600 text-white font-c-display font-600 rounded-xl text-base cursor-pointer transition-colors shadow-lg shadow-sky-500/15">Save Workout</button>
+          </div>
+        </div>
+
+        <!-- C: WORKOUT SCREEN -->
+        <div class="phone bg-[#111318] border border-[#1e2028] rounded-2xl flex flex-col c-mesh">
+          <p class="text-[10px] font-c-body text-neutral-600 text-center pt-4 tracking-wider">Do Workout</p>
+          <div class="px-6 pt-5 pb-3 border-b border-[#1e2028]">
+            <h1 class="font-c-display text-xl font-700 text-white">Monday 23/03/26</h1>
+            <p class="text-xs text-neutral-500 font-c-body mt-1">3 remaining</p>
+          </div>
+          <div class="flex-1 px-5 py-4 space-y-4">
+            <!-- Reps -->
+            <div class="bg-[#1a1d24] rounded-xl p-4 border border-[#2a2d35]">
+              <div class="flex items-center justify-between mb-3">
+                <div>
+                  <h3 class="font-c-display font-600 text-white text-sm">Bench Press</h3>
+                  <p class="text-[10px] text-neutral-500 font-c-body">60 kg</p>
+                </div>
+                <div><span class="text-3xl font-c-display font-800 text-sky-400">7</span><span class="text-neutral-600 text-sm"> / 12</span></div>
+              </div>
+              <div class="flex gap-2">
+                <button class="flex-1 py-2.5 bg-[#22262e] text-neutral-300 font-c-display font-600 rounded-lg text-sm cursor-pointer hover:bg-[#2a2d35] transition-colors">+10</button>
+                <button class="flex-1 py-2.5 bg-[#22262e] text-neutral-300 font-c-display font-600 rounded-lg text-sm cursor-pointer hover:bg-[#2a2d35] transition-colors">+5</button>
+                <button class="flex-1 py-2.5 bg-red-500/10 text-red-400 font-c-display font-600 rounded-lg text-sm cursor-pointer hover:bg-red-500/20 transition-colors">&minus;1</button>
+              </div>
+            </div>
+            <!-- Timer -->
+            <div class="bg-[#1a1d24] rounded-xl p-4 border border-[#2a2d35]">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-c-display font-600 text-white text-sm">Plank</h3>
+                <span class="text-3xl font-c-display font-800 text-white tabular-nums">1:00</span>
+              </div>
+              <button class="w-full py-2.5 bg-emerald-500 hover:bg-emerald-600 text-white font-c-display font-600 rounded-lg text-sm cursor-pointer transition-colors">Start</button>
+            </div>
+          </div>
+          <div class="px-5 pb-6 border-t border-[#1e2028]">
+            <button class="w-full py-4 bg-sky-500 hover:bg-sky-600 text-white font-c-display font-700 rounded-xl text-base cursor-pointer transition-colors shadow-lg shadow-sky-500/15">Me Done</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="text-center py-10 border-t border-neutral-800">
+    <p class="text-neutral-600 text-xs">Sayang Smash — Layout Comparison</p>
+  </footer>
+
+</body>
+</html>

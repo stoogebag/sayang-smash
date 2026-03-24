@@ -1,0 +1,496 @@
+/* Concept A: Industrial/Utilitarian Component Styles */
+
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap");
+
+/* Base typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+h4 {
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+}
+
+p {
+  font-family: "Barlow", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Accent bar */
+.a-bar {
+  display: inline-block;
+  width: 3px;
+  background: var(--primary);
+  height: 100%;
+}
+
+.a-bar.green {
+  background: var(--secondary);
+}
+
+/* Buttons */
+button,
+.btn {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 2px solid var(--border);
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  background: var(--card);
+  color: var(--foreground);
+  width: 100%;
+  font-size: 0.95rem;
+}
+
+button:active,
+.btn:active {
+  background: var(--muted);
+  transform: translate(1px, 1px);
+}
+
+button.primary,
+.btn.primary {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+  font-weight: 700;
+}
+
+button.primary:active,
+.btn.primary:active {
+  background: #ea580c;
+  border-color: #ea580c;
+}
+
+button.secondary,
+.btn.secondary {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  border-color: var(--secondary);
+  font-weight: 700;
+}
+
+button.secondary:active,
+.btn.secondary:active {
+  background: #16a34a;
+  border-color: #16a34a;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+h4 {
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+}
+
+p {
+  font-family: "Barlow", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Accent bar */
+.a-bar {
+  display: inline-block;
+  width: 3px;
+  background: #f97316;
+  height: 100%;
+}
+
+.a-bar.green {
+  background: #22c55e;
+}
+
+/* Buttons */
+button,
+.btn {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 2px solid #2d2d2d;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  background: #1a1a1a;
+  color: #e5e5e5;
+  width: 100%;
+  font-size: 0.95rem;
+}
+
+button:active,
+.btn:active {
+  background: #2d2d2d;
+  transform: translate(1px, 1px);
+}
+
+button.primary,
+.btn.primary {
+  background: #f97316;
+  color: #ffffff;
+  border-color: #f97316;
+  font-weight: 700;
+}
+
+button.primary:active,
+.btn.primary:active {
+  background: #ea580c;
+  border-color: #ea580c;
+}
+
+button.secondary,
+.btn.secondary {
+  background: #22c55e;
+  color: #ffffff;
+  border-color: #22c55e;
+  font-weight: 700;
+}
+
+button.secondary:active,
+.btn.secondary:active {
+  background: #16a34a;
+  border-color: #16a34a;
+}
+
+/* Cards */
+.card {
+  border: 2px solid var(--border);
+  padding: 1.5rem;
+  background: var(--card);
+}
+
+.card.highlight {
+  border: 3px solid var(--primary);
+  background: rgba(249, 115, 22, 0.1);
+}
+
+/* Forms */
+input,
+textarea,
+select {
+  font-family: "Barlow", sans-serif;
+  font-size: 1rem;
+  border: 2px solid var(--border);
+  padding: 1rem;
+  background: var(--card);
+  color: var(--foreground);
+  width: 100%;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted-foreground);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+label {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: var(--muted-foreground);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Exercise items */
+.exercise-item {
+  border: 2px solid var(--border);
+  border-left: 3px solid var(--secondary);
+  padding: 1rem;
+  background: var(--card);
+  margin-bottom: 0.5rem;
+}
+
+.exercise-item.completed {
+  opacity: 0.4;
+  border-left-color: var(--muted);
+}
+
+.exercise-item h4 {
+  margin-bottom: 0.5rem;
+}
+
+.exercise-meta {
+  display: flex;
+  gap: 2rem;
+  font-size: 0.8rem;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Timer display */
+.timer-display {
+  font-family: "Courier New", monospace;
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-align: center;
+  border: 3px solid var(--border);
+  padding: 2rem;
+  background: var(--card);
+  letter-spacing: 0.1em;
+  color: var(--primary);
+}
+
+/* Rep counter */
+.rep-counter {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.rep-counter button {
+  margin: 0;
+  padding: 1.5rem;
+  font-size: 1rem;
+}
+
+/* Page header */
+.page-header {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.5rem;
+  border-bottom: 3px solid var(--border);
+  background: var(--card);
+}
+
+.page-header h2 {
+  margin: 0;
+}
+
+.page-header p {
+  font-size: 0.85rem;
+  color: var(--muted-foreground);
+  margin-top: 0.5rem;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-top: 3px solid var(--border);
+}
+
+.controls button {
+  margin: 0;
+  width: 100%;
+}
+
+.card.highlight {
+  border: 3px solid #f97316;
+  background: rgba(249, 115, 22, 0.1);
+}
+
+/* Forms */
+input,
+textarea,
+select {
+  font-family: "Barlow", sans-serif;
+  font-size: 1rem;
+  border: 2px solid #2d2d2d;
+  padding: 1rem;
+  background: #1a1a1a;
+  color: #e5e5e5;
+  width: 100%;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #a3a3a3;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #f97316;
+  box-shadow: inset 0 0 0 1px #f97316;
+}
+
+label {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: #a3a3a3;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Exercise items */
+.exercise-item {
+  border: 2px solid #2d2d2d;
+  border-left: 3px solid #22c55e;
+  padding: 1rem;
+  background: #1a1a1a;
+  margin-bottom: 0.5rem;
+}
+
+.exercise-item.completed {
+  opacity: 0.4;
+  border-left-color: #404040;
+}
+
+.exercise-item h4 {
+  margin-bottom: 0.5rem;
+}
+
+.exercise-meta {
+  display: flex;
+  gap: 2rem;
+  font-size: 0.8rem;
+  color: #a3a3a3;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Timer display */
+.timer-display {
+  font-family: "Courier New", monospace;
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-align: center;
+  border: 3px solid #2d2d2d;
+  padding: 2rem;
+  background: #1a1a1a;
+  letter-spacing: 0.1em;
+  color: #f97316;
+}
+
+/* Rep counter */
+.rep-counter {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.rep-counter button {
+  margin: 0;
+  padding: 1.5rem;
+  font-size: 1rem;
+}
+
+/* Page header */
+.page-header {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.5rem;
+  border-bottom: 3px solid #2d2d2d;
+  background: #1a1a1a;
+}
+
+.page-header h2 {
+  margin: 0;
+}
+
+.page-header p {
+  font-size: 0.85rem;
+  color: #a3a3a3;
+  margin-top: 0.5rem;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-top: 3px solid #2d2d2d;
+}
+
+.controls button {
+  margin: 0;
+  width: 100%;
+}
+
+/* Phone-constrained container for desktop */
+.phone-container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .phone-container {
+    max-width: 420px;
+  }
+}
+
+/* Utility classes */
+.uppercase {
+  text-transform: uppercase;
+}
+
+.text-muted {
+  color: #a3a3a3;
+}
+
+.text-dim {
+  color: #808080;
+}
+
+.center {
+  text-align: center;
+}
+
+.mt-lg {
+  margin-top: 2rem;
+}
+
+.mb-xl {
+  margin-bottom: 3rem;
+}

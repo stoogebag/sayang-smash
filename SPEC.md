@@ -207,6 +207,18 @@ A simple, open-access workout logging app. No auth, no tracking. Users create wo
 
 ---
 
+## Design Reference
+
+**Layout Preview**: See `layoutPreview/index.html` for Concept A visual reference. Open in a browser to view all 5 screens (Landing, Create Workout, Do Workout, Saved, Summary) at mobile scale with proper styling.
+
+**Design System Files**:
+
+- `apps/nextjs/src/app/_components/concept-a-styles.css` — Core component styles (buttons, cards, forms, etc.)
+- `apps/nextjs/tailwind.config.js` — Tailwind customization (colors, fonts, spacing)
+- `tooling/tailwind/theme.css` — Global CSS variables and theme tokens
+
+---
+
 ## Notes
 
 - No authentication, no user tracking
