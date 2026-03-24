@@ -129,12 +129,35 @@ export default function DoWorkoutPage({
           <p className="font-sans text-xs text-[#94a3b8]">
             {remaining} remaining
           </p>
-          <button
-            onClick={() => setShowCompleted(!showCompleted)}
-            className="font-display cursor-pointer text-[9px] tracking-wider text-[#64748b] uppercase"
-          >
-            {showCompleted ? "Hide" : "Show"}
-          </button>
+          <label className="flex cursor-pointer items-center gap-2">
+            <button
+              onClick={() => setShowCompleted(!showCompleted)}
+              className={`flex h-4 w-4 items-center justify-center border-2 ${
+                showCompleted
+                  ? "border-orange-500 bg-orange-500"
+                  : "border-[#475569] bg-[#1e293b]"
+              }`}
+            >
+              {showCompleted && (
+                <svg
+                  className="h-3 w-3 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={3}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              )}
+            </button>
+            <span className="font-display text-[9px] tracking-wider text-[#64748b] uppercase">
+              Show finished
+            </span>
+          </label>
         </div>
       </div>
 
