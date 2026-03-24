@@ -29,6 +29,12 @@ export default function HomePage() {
             Create Workout
           </button>
           <button
+            onClick={() => router.push("/workouts")}
+            className="font-display font-600 w-full cursor-pointer border-l-4 border-orange-500 bg-[#1e293b] py-4 text-base tracking-wider text-[#e2e8f0] uppercase"
+          >
+            Recent Workouts
+          </button>
+          <button
             onClick={() => router.push("/random")}
             className="font-display font-600 w-full cursor-pointer border-l-4 border-orange-500 bg-[#1e293b] py-4 text-base tracking-wider text-[#e2e8f0] uppercase"
           >

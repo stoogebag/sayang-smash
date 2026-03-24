@@ -1,5 +1,5 @@
 import type { TRPCRouterRecord } from "@trpc/server";
-import { eq, sql } from "drizzle-orm";
+import { desc, eq, sql } from "drizzle-orm";
 import { z } from "zod/v4";
 
 import { CreateWorkoutSchema, SayangSmashEntry } from "@acme/db/schema";
@@ -48,6 +48,19 @@ export const workoutRouter = {
 
       return entry ?? null;
     }),
+
+  listRecent: publicProcedure.query(async ({ ctx }) => {
+    return ctx.db
+      .select({
+        id: SayangSmashEntry.id,
+        name: SayangSmashEntry.name,
+        slug: SayangSmashEntry.slug,
+        createdAt: SayangSmashEntry.createdAt,
+      })
+      .from(SayangSmashEntry)
+      .orderBy(desc(SayangSmashEntry.createdAt))
+      .limit(5);
+  }),
 
   getRandom: publicProcedure.query(async ({ ctx }) => {
     const [entry] = await ctx.db
