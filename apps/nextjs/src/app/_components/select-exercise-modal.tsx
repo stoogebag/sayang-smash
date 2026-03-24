@@ -104,7 +104,7 @@ export function SelectExerciseModal({
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/60">
       <div className="flex max-h-[85vh] w-full max-w-[420px] flex-col border border-b-0 border-[#334155] bg-[#0f172a]">
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-[#334155] px-5 py-4">
+        <div className="flex items-center border-b border-[#334155] px-5 py-4">
           <h2 className="font-display font-800 text-base tracking-wide text-[#f8fafc] uppercase">
             {selectedExercise
               ? "Set Parameters"
@@ -114,7 +114,7 @@ export function SelectExerciseModal({
           </h2>
           <button
             onClick={resetAndClose}
-            className="flex h-5 w-5 flex-shrink-0 cursor-pointer items-center justify-center text-[#64748b] hover:text-[#94a3b8]"
+            className="ml-auto flex h-5 w-5 flex-shrink-0 cursor-pointer items-center justify-center text-[#64748b] hover:text-[#94a3b8]"
             aria-label="Close"
           >
             <svg
