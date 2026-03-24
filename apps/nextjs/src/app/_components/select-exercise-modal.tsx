@@ -34,6 +34,8 @@ export function SelectExerciseModal({
     name: string;
     useWeight: boolean;
     type: "REPS" | "TIME";
+    defaultReps?: number | null;
+    defaultTime?: number | null;
   } | null>(null);
 
   // Params form state
@@ -45,6 +47,8 @@ export function SelectExerciseModal({
   const [newName, setNewName] = useState("");
   const [newType, setNewType] = useState<"REPS" | "TIME">("REPS");
   const [newUseWeight, setNewUseWeight] = useState(false);
+  const [newDefaultReps, setNewDefaultReps] = useState("");
+  const [newDefaultTime, setNewDefaultTime] = useState("");
 
   const { data: exercises = [] } = useQuery(trpc.exercise.list.queryOptions());
 
@@ -58,6 +62,8 @@ export function SelectExerciseModal({
         setNewName("");
         setNewType("REPS");
         setNewUseWeight(false);
+        setNewDefaultReps("");
+        setNewDefaultTime("");
       },
     }),
   );
@@ -95,6 +101,8 @@ export function SelectExerciseModal({
     setTime("");
     setWeight("");
     setShowCreate(false);
+    setNewDefaultReps("");
+    setNewDefaultTime("");
     onClose();
   }
 
@@ -238,6 +246,36 @@ export function SelectExerciseModal({
                 </div>
               </div>
 
+              {newType === "REPS" && (
+                <div>
+                  <label className="font-display mb-2 block text-[10px] tracking-[0.2em] text-[#64748b] uppercase">
+                    Default Reps (optional)
+                  </label>
+                  <input
+                    type="number"
+                    value={newDefaultReps}
+                    onChange={(e) => setNewDefaultReps(e.target.value)}
+                    placeholder="e.g. 12"
+                    className="w-full border border-[#334155] bg-[#1e293b] px-4 py-3 font-sans text-base text-[#f8fafc] focus:border-orange-500 focus:outline-none"
+                  />
+                </div>
+              )}
+
+              {newType === "TIME" && (
+                <div>
+                  <label className="font-display mb-2 block text-[10px] tracking-[0.2em] text-[#64748b] uppercase">
+                    Default Time in seconds (optional)
+                  </label>
+                  <input
+                    type="number"
+                    value={newDefaultTime}
+                    onChange={(e) => setNewDefaultTime(e.target.value)}
+                    placeholder="e.g. 60"
+                    className="w-full border border-[#334155] bg-[#1e293b] px-4 py-3 font-sans text-base text-[#f8fafc] focus:border-orange-500 focus:outline-none"
+                  />
+                </div>
+              )}
+
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => setNewUseWeight(!newUseWeight)}
@@ -275,6 +313,12 @@ export function SelectExerciseModal({
                     name: newName.trim(),
                     type: newType,
                     useWeight: newUseWeight,
+                    ...(newType === "REPS" && newDefaultReps
+                      ? { defaultReps: parseInt(newDefaultReps, 10) }
+                      : {}),
+                    ...(newType === "TIME" && newDefaultTime
+                      ? { defaultTime: parseInt(newDefaultTime, 10) }
+                      : {}),
                   });
                 }}
                 disabled={createExercise.isPending || !newName.trim()}
@@ -298,14 +342,21 @@ export function SelectExerciseModal({
                 {filtered.map((exercise) => (
                   <button
                     key={exercise.uid}
-                    onClick={() =>
+                    onClick={() => {
                       setSelectedExercise({
                         uid: exercise.uid,
                         name: exercise.name,
                         useWeight: exercise.useWeight,
                         type: exercise.type as "REPS" | "TIME",
-                      })
-                    }
+                        defaultReps: exercise.defaultReps,
+                        defaultTime: exercise.defaultTime,
+                      });
+                      // Pre-populate with defaults
+                      if (exercise.defaultReps)
+                        setReps(String(exercise.defaultReps));
+                      if (exercise.defaultTime)
+                        setTime(String(exercise.defaultTime));
+                    }}
                     className="flex w-full cursor-pointer items-center overflow-hidden border border-[#334155] bg-[#1e293b] text-left"
                   >
                     <div className="w-1 self-stretch bg-gradient-to-b from-orange-500 to-orange-600" />

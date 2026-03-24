@@ -12,6 +12,8 @@ export const SayangSmashExercise = pgTable("sayang_smash_exercises", (t) => ({
   name: t.varchar({ length: 256 }).notNull(),
   useWeight: t.boolean().notNull().default(false),
   type: t.varchar({ length: 10 }).notNull().$type<"REPS" | "TIME">(),
+  defaultReps: t.integer(),
+  defaultTime: t.integer(),
   createdAt: t.timestamp().defaultNow().notNull(),
   updatedAt: t
     .timestamp({ mode: "date", withTimezone: true })
@@ -39,6 +41,8 @@ export const CreateExerciseSchema = createInsertSchema(SayangSmashExercise, {
   name: z.string().min(1).max(256),
   useWeight: z.boolean(),
   type: z.enum(["REPS", "TIME"]),
+  defaultReps: z.number().int().positive().optional(),
+  defaultTime: z.number().int().positive().optional(),
 }).omit({
   uid: true,
   createdAt: true,
