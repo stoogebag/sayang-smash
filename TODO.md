@@ -14,3 +14,5 @@
   - Need to add optional `defaultReps` and `defaultTime` fields to `SayangSmashExercise` table
   - Update exercise creation form to allow setting defaults
   - Pre-populate parameter forms on Do Workout page with these defaults
+
+- [ ] Workout Saved page: Remove "Copy" button, make the link itself clickable to copy to clipboard instead
