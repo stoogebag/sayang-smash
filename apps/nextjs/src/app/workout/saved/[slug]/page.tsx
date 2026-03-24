@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { QRCodeSVG } from "qrcode.react";
 
+import { APP_DOMAIN } from "~/config";
 import { useTRPC } from "~/trpc/react";
 
 export default function WorkoutSavedPage({
@@ -21,10 +22,7 @@ export default function WorkoutSavedPage({
     trpc.workout.getBySlug.queryOptions({ slug }),
   );
 
-  const workoutUrl =
-    typeof window !== "undefined"
-      ? `${window.location.origin}/workout/${slug}`
-      : `/workout/${slug}`;
+  const workoutUrl = `${APP_DOMAIN}/workout/${slug}`;
 
   async function handleCopy() {
     try {
