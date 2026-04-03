@@ -36,7 +36,7 @@ export const viewport: Viewport = {
 export default function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="flex h-screen flex-col bg-[#0f172a] font-sans text-[#f8fafc] antialiased">
+      <body className="flex h-dvh flex-col bg-[#0f172a] font-sans text-[#f8fafc] antialiased">
         <TRPCReactProvider>
           <Header />
           <div className="mx-auto flex w-full max-w-[420px] flex-1 flex-col overflow-hidden">
