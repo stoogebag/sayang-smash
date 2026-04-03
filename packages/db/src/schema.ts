@@ -1,41 +1,48 @@
 import { sql } from "drizzle-orm";
-import { pgTable } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod/v4";
+
+import { sayangSmash } from "./auth-schema";
 
 // ----
 // Sayang Smash - Workout App Tables
 // ----
 
-export const SayangSmashExercise = pgTable("sayang_smash_exercises", (t) => ({
-  uid: t.uuid().notNull().primaryKey().defaultRandom(),
-  name: t.varchar({ length: 256 }).notNull(),
-  useWeight: t.boolean().notNull().default(false),
-  type: t.varchar({ length: 10 }).notNull().$type<"REPS" | "TIME">(),
-  defaultReps: t.integer(),
-  defaultTime: t.integer(),
-  createdAt: t.timestamp().defaultNow().notNull(),
-  updatedAt: t
-    .timestamp({ mode: "date", withTimezone: true })
-    .$onUpdateFn(() => sql`now()`),
-}));
+export const SayangSmashExercise = sayangSmash.table(
+  "sayang_smash_exercises",
+  (t) => ({
+    uid: t.uuid().notNull().primaryKey().defaultRandom(),
+    name: t.varchar({ length: 256 }).notNull(),
+    useWeight: t.boolean().notNull().default(false),
+    type: t.varchar({ length: 10 }).notNull().$type<"REPS" | "TIME">(),
+    defaultReps: t.integer(),
+    defaultTime: t.integer(),
+    createdAt: t.timestamp().defaultNow().notNull(),
+    updatedAt: t
+      .timestamp({ mode: "date", withTimezone: true })
+      .$onUpdateFn(() => sql`now()`),
+  }),
+);
 
-export const SayangSmashEntry = pgTable("sayang_smash_entries", (t) => ({
-  id: t.uuid().notNull().primaryKey().defaultRandom(),
-  name: t.varchar({ length: 256 }).notNull(),
-  slug: t.varchar({ length: 5 }).notNull().unique(),
-  exercises: t.jsonb().notNull().$type<
-    Array<{
-      exercise_uid: string;
-      exercise_name: string;
-      exercise_type: "REPS" | "TIME";
-      reps?: number;
-      time?: number;
-      weight?: number;
-    }>
-  >(),
-  createdAt: t.timestamp().defaultNow().notNull(),
-}));
+export const SayangSmashEntry = sayangSmash.table(
+  "sayang_smash_entries",
+  (t) => ({
+    id: t.uuid().notNull().primaryKey().defaultRandom(),
+    name: t.varchar({ length: 256 }).notNull(),
+    slug: t.varchar({ length: 5 }).notNull().unique(),
+    exercises: t.jsonb().notNull().$type<
+      Array<{
+        exercise_uid: string;
+        exercise_name: string;
+        exercise_type: "REPS" | "TIME";
+        reps?: number;
+        time?: number;
+        weight?: number;
+      }>
+    >(),
+    createdAt: t.timestamp().defaultNow().notNull(),
+  }),
+);
 
 export const CreateExerciseSchema = createInsertSchema(SayangSmashExercise, {
   name: z.string().min(1).max(256),
